@@ -23,7 +23,7 @@ import Network.HTTP.Client.TLS (tlsManagerSettings)
 import DutchGov.CBS.Client
 import DutchGov.CBS.ODataResponse (ODataValue(..))
 import DutchGov.Database
-import DutchGov.Iv3.Client
+import DutchGov.Iv3.Client (fetchIv3Dimension, fetchIv3MunicipalityData, stripODataValue)
 import DutchGov.Iv3.DatasetRegistry
 import DutchGov.Rijksfinancien.Client
 
@@ -174,33 +174,40 @@ collectIv3 manager iv3Opts pool = do
 
         case (taskFieldResult, costCatResult, muniResult, reportResult) of
           (Right taskFields, Right costCats, Right munis, Right reports) -> do
-            -- Store dimensions (upsert, shared across years)
-            runSqlPool (upsertIv3TaskFields taskFields) pool
-            runSqlPool (upsertIv3CostCategories costCats) pool
-            runSqlPool (upsertIv3Municipalities munis) pool
-            runSqlPool (upsertIv3ReportTypes reports) pool
+            -- Store dimensions with stripped keys
+            runSqlPool (upsertIv3TaskFields (map stripODataValue taskFields)) pool
+            runSqlPool (upsertIv3CostCategories (map stripODataValue costCats)) pool
+            runSqlPool (upsertIv3Municipalities (map stripODataValue munis)) pool
+            runSqlPool (upsertIv3ReportTypes (map stripODataValue reports)) pool
             putStrLn $ "    Dimensions: " ++ show (length taskFields) ++ " tasks, "
                      ++ show (length costCats) ++ " categories, "
                      ++ show (length munis) ++ " municipalities, "
                      ++ show (length reports) ++ " report types"
 
-            -- Fetch finance data per municipality
+            -- Fetch finance data per municipality × report type
+            -- (each combination ≤10K rows, fits single request)
             let muniKeys = map ovKey munis
+                reportKeys = map ovKey reports
+                totalQueries = length muniKeys * length reportKeys
             errorCount <- newIORef (0 :: Int)
             rowCount <- newIORef (0 :: Int)
+            queryCount <- newIORef (0 :: Int)
 
-            forM_ (zip [(1::Int)..] muniKeys) $ \(idx, muniKey) -> do
-              result <- fetchIv3MunicipalityData manager datasetId muniKey
-              case result of
-                Left err -> do
-                  modifyIORef' errorCount (+1)
-                  putStrLn $ "    Error " ++ Text.unpack muniKey ++ ": " ++ err
-                Right rows -> do
-                  runSqlPool (upsertIv3MunicipalFinances year rows) pool
-                  modifyIORef' rowCount (+ length rows)
-                  putStr $ "\r    " ++ show idx ++ "/" ++ show (length muniKeys)
-                         ++ " municipalities (" ++ show (length rows) ++ " rows last)"
-                  hFlush stdout
+            forM_ muniKeys $ \muniKey ->
+              forM_ reportKeys $ \reportKey -> do
+                result <- fetchIv3MunicipalityData manager datasetId muniKey reportKey
+                case result of
+                  Left err -> do
+                    modifyIORef' errorCount (+1)
+                    putStrLn $ "    Error " ++ Text.unpack muniKey ++ "/" ++ Text.unpack reportKey ++ ": " ++ err
+                  Right rows -> do
+                    runSqlPool (upsertIv3MunicipalFinances year rows) pool
+                    modifyIORef' rowCount (+ length rows)
+                    modifyIORef' queryCount (+1)
+                    done <- readIORef queryCount
+                    putStr $ "\r    " ++ show done ++ "/" ++ show totalQueries
+                           ++ " queries (" ++ show (length rows) ++ " rows last)"
+                    hFlush stdout
 
             errors <- readIORef errorCount
             totalRows <- readIORef rowCount
