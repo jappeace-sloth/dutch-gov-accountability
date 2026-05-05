@@ -83,4 +83,47 @@ SyncMeta
     value Text
     UniqueMetaKey key
     deriving Show Eq
+
+Iv3TaskField
+    cbsKey Text
+    title Text
+    description Text Maybe
+    categoryGroupId Int Maybe
+    UniqueIv3TaskFieldKey cbsKey
+    deriving Show Eq
+
+Iv3CostCategory
+    cbsKey Text
+    title Text
+    description Text Maybe
+    categoryGroupId Int Maybe
+    UniqueIv3CostCategoryKey cbsKey
+    deriving Show Eq
+
+Iv3Municipality
+    cbsKey Text
+    title Text
+    description Text Maybe
+    categoryGroupId Int Maybe
+    UniqueIv3MunicipalityKey cbsKey
+    deriving Show Eq
+
+Iv3ReportType
+    cbsKey Text
+    title Text
+    description Text Maybe
+    categoryGroupId Int Maybe
+    UniqueIv3ReportTypeKey cbsKey
+    deriving Show Eq
+
+Iv3MunicipalFinance
+    year Int
+    taskFieldKey Text
+    costCategoryKey Text
+    municipalityKey Text
+    reportTypeKey Text
+    amountFirstPublication Double Maybe
+    amountRevised Double Maybe
+    UniqueIv3Finance year taskFieldKey costCategoryKey municipalityKey reportTypeKey
+    deriving Show Eq
 |]
