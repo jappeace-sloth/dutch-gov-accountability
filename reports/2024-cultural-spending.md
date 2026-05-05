@@ -1,0 +1,208 @@
+# Dutch Government Cultural Spending — 2024
+
+How the Netherlands spends public money on culture, examined from two angles:
+the **CBS 84122NED** national accounts (what type of spending) and the
+**Iv3 municipal accounts** (which municipality, on what).
+
+## National picture (CBS 84122NED)
+
+CBS tracks all government cultural spending under COFOG function "8.2 Cultuur".
+
+### Total by government level (2023, million EUR)
+
+| Level                    | Amount |
+|--------------------------|-------:|
+| **All government**       | 4,502  |
+| Lokale overheid          | 2,995  |
+| Rijksoverheid            | 1,719  |
+| Overige centrale overheid|   928  |
+| Socialezekerheidsfondsen |     0  |
+
+Two-thirds of cultural spending is local government.
+
+### Spending by type (2023, total government, million EUR)
+
+| Transaction type                           | Amount |
+|--------------------------------------------|-------:|
+| P2 Intermediair verbruik (goods & services)| 1,585  |
+| D1 Beloning van werknemers (wages)         | 1,303  |
+| Overige kapitaaluitgaven (other capital)   |   700  |
+| P51g Bruto investeringen (gross investment)|   651  |
+| D3 Subsidies                               |   510  |
+| D7 Overige inkomensoverdrachten (transfers)|   380  |
+| D92 Investeringsbijdragen                  |    17  |
+
+Wages are 29% of the total — not the majority. The largest single category is
+intermediate consumption (goods and services purchased), at 35%.
+
+### Trend (1995–2024, total government, million EUR)
+
+| Year | Amount | Year | Amount | Year | Amount |
+|------|-------:|------|-------:|------|-------:|
+| 1995 |  1,490 | 2005 |  2,823 | 2015 |  3,023 |
+| 1996 |  1,527 | 2006 |  2,963 | 2016 |  3,213 |
+| 1997 |  1,761 | 2007 |  2,928 | 2017 |  3,359 |
+| 1998 |  1,914 | 2008 |  3,304 | 2018 |  3,734 |
+| 1999 |  2,209 | 2009 |  3,392 | 2019 |  3,741 |
+| 2000 |  2,396 | 2010 |  3,389 | 2020 |  3,791 |
+| 2001 |  2,589 | 2011 |  3,210 | 2021 |  4,078 |
+| 2002 |  2,718 | 2012 |  3,128 | 2022 |  4,395 |
+| 2003 |  2,719 | 2013 |  3,023 | 2023 |  4,502 |
+| 2004 |  2,749 | 2014 |  2,900 | 2024 |  4,963 |
+
+Cultural spending dropped during the 2011–2014 austerity period (peak-to-trough
+-14%), then recovered and has grown steadily since. The 2024 figure of nearly
+EUR 5 billion is the highest on record.
+
+## Municipal view (Iv3 jaarrekening 2024)
+
+Iv3 data covers all 342 Dutch municipalities. Culture-related task fields are:
+
+- **5.3** Cultuurpresentatie, cultuurproductie en cultuurparticipatie
+- **5.4** Musea
+- **5.5** Cultureel erfgoed
+- **5.6** Media
+
+Total municipal cultural spending (2024 annual accounts): **EUR 2,829 million**
+across all cost categories, of which EUR 2,475 million is expenditure (lasten).
+
+For context, total municipal expenditure across all policy areas is EUR 313,545
+million, so culture represents **0.8%** of all municipal spending.
+
+### By culture subcategory (national total, million EUR)
+
+| Task field                                       | Amount |
+|--------------------------------------------------|-------:|
+| 5.3 Cultuurpresentatie, -productie, -participatie| 1,564  |
+| 5.6 Media                                        |   634  |
+| 5.4 Musea                                        |   459  |
+| 5.5 Cultureel erfgoed                            |   173  |
+
+More than half goes to the broad "cultuurpresentatie" category (theatres,
+concert halls, festivals, art production). Media (libraries, local broadcasting)
+is the second-largest.
+
+### Top 20 municipalities (million EUR)
+
+| Rank | Municipality     | Total | Line items |
+|-----:|------------------|------:|-----------:|
+|    1 | Amsterdam        | 305.8 |        288 |
+|    2 | Rotterdam        | 200.0 |        288 |
+|    3 | Den Haag         | 162.6 |        288 |
+|    4 | Utrecht          |  91.1 |        288 |
+|    5 | Groningen        |  82.6 |        288 |
+|    6 | Eindhoven        |  60.1 |        288 |
+|    7 | Arnhem           |  53.5 |        288 |
+|    8 | Tilburg          |  52.4 |        288 |
+|    9 | Haarlem          |  52.4 |        288 |
+|   10 | Almere           |  46.4 |        288 |
+|   11 | Nijmegen         |  44.9 |        288 |
+|   12 | 's-Hertogenbosch |  42.4 |        288 |
+|   13 | Amersfoort       |  38.0 |        288 |
+|   14 | Breda            |  37.7 |        288 |
+|   15 | Maastricht       |  37.3 |        288 |
+|   16 | Enschede         |  32.5 |        288 |
+|   17 | Haarlemmermeer   |  30.8 |        288 |
+|   18 | Dordrecht        |  30.7 |        288 |
+|   19 | Apeldoorn        |  30.3 |        288 |
+|   20 | Leiden           |  30.1 |        288 |
+
+The G4 (Amsterdam, Rotterdam, Den Haag, Utrecht) together account for EUR 759
+million — 27% of all municipal cultural spending.
+
+### How they spend it: cost categories (national total, million EUR)
+
+| Cost category                                         | Amount |
+|-------------------------------------------------------|-------:|
+| L4.3.8 Inkomensoverdrachten – overige instellingen    |  886.4 |
+| L4.2 Subsidies                                        |  421.7 |
+| L4.3.6 Inkomensoverdrachten – overige overheden       |  364.4 |
+| L3.8 Overige goederen en diensten                     |  307.9 |
+| L1.1 Salarissen en sociale lasten                     |  215.5 |
+| B3.6 Huren (rental income)                            |  185.0 |
+| L7.3 Afschrijvingen (depreciation)                    |  107.7 |
+| B3.8 Overige goederen en diensten (income)            |   64.2 |
+| B4.3.1 Inkomensoverdrachten – Rijk (central gov income)|  62.8 |
+| L7.2 Mutatie voorzieningen                            |   38.3 |
+| L4.3.3 Inkomensoverdrachten – gemeenschappelijke regelingen | 36.2 |
+| L3.5.1 Ingeleend personeel (temp staff)               |   28.0 |
+
+The dominant spending pattern is **transfers to external organisations**: income
+transfers to "overige instellingen" (EUR 886M) and subsidies (EUR 422M) together
+make up over half of all spending. This means municipalities primarily fund
+culture by giving money to museums, theatres, libraries, and festivals —
+not by running them directly.
+
+Direct staff costs (salarissen) are only EUR 216 million (8.7% of expenditure),
+confirming that most cultural work is done at arm's length through subsidised
+institutions.
+
+### Budget vs actuals: top 10 (million EUR)
+
+| Municipality     | Budget | Actual | Variance |
+|------------------|-------:|-------:|---------:|
+| Amsterdam        |  289.7 |  305.8 |    +5.6% |
+| Rotterdam        |  177.7 |  200.0 |   +12.6% |
+| Den Haag         |  151.5 |  162.6 |    +7.3% |
+| Utrecht          |   92.7 |   91.1 |    -1.7% |
+| Groningen        |   76.0 |   82.6 |    +8.7% |
+| Eindhoven        |   55.6 |   60.1 |    +8.1% |
+| Arnhem           |   51.1 |   53.5 |    +4.7% |
+| Tilburg          |   53.2 |   52.4 |    -1.5% |
+| Haarlem          |   49.0 |   52.4 |    +6.9% |
+| Almere           |   46.0 |   46.4 |    +0.9% |
+
+Most cities overspend their cultural budget by 5–13%. Rotterdam shows the
+largest overrun at +12.6%. Only Utrecht and Tilburg came in under budget.
+
+### City profiles: where the money goes
+
+**Amsterdam** (EUR 306M): Heavily subsidy-driven. EUR 146M in direct subsidies
+(48% of spending), EUR 63M to other government cultural bodies, EUR 39M rental
+income from cultural properties. Museums at EUR 59M, media at EUR 44M.
+
+**Rotterdam** (EUR 200M): Almost entirely transfers — EUR 163M goes to "overige
+instellingen" (82% of spending). Minimal direct subsidy line items; Rotterdam
+channels most cultural money through a single transfer mechanism. Only EUR 12M
+in staff costs.
+
+**Den Haag** (EUR 163M): More balanced. EUR 48M transfers to other institutions,
+EUR 33M to other government bodies, EUR 27M goods & services, EUR 19M
+salaries. Significant depreciation (EUR 12M) suggests direct ownership of
+cultural infrastructure.
+
+**Utrecht** (EUR 91M): Dominated by transfers to other institutions (EUR 71M,
+78%). Lean direct operation with EUR 5M salaries and EUR 10M goods/services.
+
+**Groningen** (EUR 83M): Notable for high goods & services spending (EUR 15M)
+and significant temporary staff costs (EUR 3.3M). EUR 30M to other
+institutions. Strong museum spending (EUR 24M — highest ratio outside G4).
+
+**Eindhoven** (EUR 60M): Subsidy-heavy at EUR 27M (45%). Significant goods &
+services (EUR 9M) and salaries (EUR 6M) suggest more direct cultural
+operation. Unique EUR 2.5M in lease payments (pachten).
+
+## Cross-referencing the two datasets
+
+CBS reports EUR 4,502M total government cultural spending (2023). Of this,
+EUR 2,995M is attributed to "lokale overheid" (local government). The Iv3
+municipal data for 2024 shows EUR 2,829M — broadly consistent when allowing for
+the one-year difference, the exclusion of waterschappen and other local bodies
+from the Iv3 municipal figure, and the fact that CBS may use different
+consolidation rules.
+
+The CBS transaction-type breakdown (showing EUR 1,303M in wages nationally)
+versus the Iv3 cost-category breakdown (showing EUR 216M in municipal salaries)
+implies that roughly EUR 1,087M of cultural-sector wages are paid by central
+government or non-municipal bodies — consistent with national museums, public
+broadcasters (NPO), and heritage organisations being centrally funded.
+
+## Data sources
+
+- **CBS 84122NED**: Overheidsuitgaven (national accounts), via opendata.cbs.nl.
+  COFOG function 8.2 Cultuur. Latest available: 2024 (provisional).
+- **Iv3 municipal accounts**: Per-municipality finance data via dataderden.cbs.nl.
+  BBV taakvelden 5.3–5.6. Report type: 2024X005 (jaarrekening).
+- All amounts in millions of euros unless otherwise noted. Iv3 data is stored
+  in thousands of euros at source and converted to millions in this report.
+- Loaded and queried using the `dutch-gov-accountability` collector tool.
