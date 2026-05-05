@@ -85,6 +85,51 @@ Cultuuruitgaven daalden tijdens de bezuinigingsperiode 2011–2014 (van piek tot
 dal -14%), herstelden daarna en groeien sindsdien gestaag. Het cijfer voor 2024
 van bijna EUR 5 miljard is het hoogste ooit.
 
+### Inflatie versus reële groei (2014–2024)
+
+De nominale groei van EUR 2,9 naar EUR 5,0 miljard (+EUR 2.063 mln, +71%) roept
+de vraag op hoeveel hiervan echte beleidsgroei is en hoeveel slechts inflatie.
+Met behulp van de CBS-consumentenprijsindex (tabel 83131NED, basisjaar 2015=100)
+is de nominale groei ontleed:
+
+| Component | Bedrag | Aandeel |
+|-----------|--------|---------|
+| Inflatie (CPI 99,4 → 130,3) | EUR 1.177 mln | 57% |
+| Reële groei | EUR 886 mln | 43% |
+| **Totaal nominaal** | **EUR 2.063 mln** | **100%** |
+
+Gecorrigeerd voor inflatie groeide de culturele sector dus reëel met 30,5% over
+tien jaar — aanzienlijk, maar slechts de helft van de nominale stijging.
+
+**Wie drijft de groei?** Opvallend genoeg zijn het de gemeenten, niet de
+rijksoverheid, die verantwoordelijk zijn voor het leeuwendeel:
+
+| Overheidsniveau | Nominale groei | Aandeel |
+|-----------------|---------------|---------|
+| Lokale overheid | +EUR 1.403 mln | **68%** |
+| Rijksoverheid | +EUR 962 mln | 32% |
+
+Gemeenten verhoogden hun cultuuruitgaven van EUR 1,6 naar EUR 3,0 miljard —
+bijna een verdubbeling. De rijksoverheid groeide van EUR 1,2 naar EUR 1,8
+miljard. Dit betekent dat de groei in cultuurbesteding primair een **lokale
+politieke keuze** is geweest, niet een top-down beslissing vanuit Den Haag.
+
+Uitgesplitst naar bestedingstype:
+
+| Type uitgave | 2014 | 2024 | Groei |
+|--------------|------|------|-------|
+| Goederen en diensten (intermediair verbruik) | 1.283 | 1.989 | +706 mln |
+| Lonen en salarissen | 680 | 1.167 | +487 mln |
+| Kapitaalinvesteringen | 241 | 698 | +457 mln |
+| Inkomensoverdrachten (subsidies e.d.) | 564 | 827 | +263 mln |
+
+*(Bedragen in miljoenen euro's)*
+
+Opvallend is dat kapitaalinvesteringen bijna verdrievoudigden — gemeenten hebben
+fors geïnvesteerd in nieuwbouw en renovatie van culturele voorzieningen. De groei
+in loonkosten (EUR 487 mln) weerspiegelt deels inflatie maar ook uitbreiding van
+personeel, met name bij gemeenten die cultuurproductie in eigen beheer uitvoeren.
+
 ## Gemeentelijk beeld (Iv3 jaarrekening 2024)
 
 Iv3-data omvat alle 342 Nederlandse gemeenten. De cultuurgerelateerde
