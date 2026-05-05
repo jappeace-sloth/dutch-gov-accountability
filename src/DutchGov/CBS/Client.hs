@@ -3,7 +3,7 @@
 module DutchGov.CBS.Client
   ( CbsExpenditure(..)
   , fetchDimension
-  , fetchExpenditures
+  , fetchExpenditureSlice
   , cbsBaseUrl
   ) where
 
@@ -56,31 +56,24 @@ fetchDimension manager dimension = liftIO $ do
       Left err    -> pure (Left err)
     code -> pure (Left $ "HTTP " ++ show code ++ " fetching " ++ dimension)
 
--- | Fetch all expenditure rows, following pagination links.
--- Calls the callback with each page of results.
-fetchExpenditures :: MonadIO m
-                  => Manager
-                  -> Int -- ^ Page size ($top parameter)
-                  -> (ODataResponse CbsExpenditure -> m ())
-                  -> m (Either String ())
-fetchExpenditures manager pageSize processPage = do
-  let initialUrl = cbsBaseUrl ++ "TypedDataSet?$top=" ++ show pageSize
-  fetchPages initialUrl
-  where
-    fetchPages url = do
-      result <- liftIO $ do
-        request <- parseRequest url
-        response <- httpLbs request manager
-        case statusCode (responseStatus response) of
-          200 -> pure (Right (responseBody response))
-          code -> pure (Left $ "HTTP " ++ show code ++ " fetching expenditures")
-      case result of
-        Left err -> pure (Left err)
-        Right body -> case eitherDecode body of
-          Left err -> pure (Left err)
-          Right odata -> do
-            processPage odata
-            case odataNextLink odata of
-              Nothing -> pure (Right ())
-              Just nextUrl -> fetchPages (Text.unpack nextUrl)
-
+-- | Fetch expenditure rows for a specific period and sector combination.
+-- The CBS API doesn't support $skip pagination, so we filter by
+-- period + sector to get chunks small enough to return in one request
+-- (~1680 rows per combination).
+fetchExpenditureSlice :: MonadIO m
+                      => Manager
+                      -> Text -- ^ Period key (e.g. "2023JJ00")
+                      -> Text -- ^ Sector key (e.g. "A044938")
+                      -> m (Either String [CbsExpenditure])
+fetchExpenditureSlice manager periodKey sectorKey = liftIO $ do
+  let url = cbsBaseUrl ++ "TypedDataSet?$filter=Perioden eq '"
+              ++ Text.unpack periodKey ++ "' and Sectoren eq '"
+              ++ Text.unpack sectorKey ++ "'"
+  request <- parseRequest url
+  response <- httpLbs request manager
+  case statusCode (responseStatus response) of
+    200 -> case eitherDecode (responseBody response) of
+      Right odata -> pure (Right (odataValue odata))
+      Left err    -> pure (Left err)
+    code -> pure (Left $ "HTTP " ++ show code ++ " fetching expenditures for "
+                        ++ Text.unpack periodKey ++ "/" ++ Text.unpack sectorKey)

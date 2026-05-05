@@ -8,7 +8,9 @@ module DutchGov.Collector
   ) where
 
 import Control.Monad (forM_)
+import Data.IORef (newIORef, readIORef, modifyIORef')
 import qualified Data.Text as Text
+import System.IO (hFlush, stdout)
 import Data.Time.Clock (getCurrentTime)
 import Data.Time.Format (formatTime, defaultTimeLocale)
 import Database.Persist.Sqlite (ConnectionPool, runSqlPool)
@@ -16,7 +18,7 @@ import Network.HTTP.Client (Manager, newManager)
 import Network.HTTP.Client.TLS (tlsManagerSettings)
 
 import DutchGov.CBS.Client
-import DutchGov.CBS.ODataResponse (odataValue)
+import DutchGov.CBS.ODataResponse (ODataValue(..))
 import DutchGov.Database
 import DutchGov.Rijksfinancien.Client
 
@@ -36,34 +38,66 @@ collectAll source pool = do
       collectRijksfinancien manager pool
 
 -- | Collect CBS 84122NED dataset (dimensions + expenditures).
+-- The CBS API does not support $skip pagination, so we fetch expenditures
+-- by iterating over all period × sector combinations (~180 requests).
 collectCbs :: Manager -> ConnectionPool -> IO ()
 collectCbs manager pool = do
   putStrLn "Collecting CBS dimensions..."
 
-  -- Fetch and store dimension tables
-  fetchAndStore "Overheidsfuncties" (\vals -> runSqlPool (upsertGovFunctions vals) pool)
-  fetchAndStore "Transacties" (\vals -> runSqlPool (upsertTransactions vals) pool)
-  fetchAndStore "Sectoren" (\vals -> runSqlPool (upsertSectors vals) pool)
-  fetchAndStore "Perioden" (\vals -> runSqlPool (upsertPeriods vals) pool)
+  -- Fetch and store dimension tables, keeping keys for iteration
+  periodKeys <- fetchAndStore "Perioden" (\vals -> runSqlPool (upsertPeriods vals) pool)
+  sectorKeys <- fetchAndStore "Sectoren" (\vals -> runSqlPool (upsertSectors vals) pool)
+  fetchAndStore_ "Overheidsfuncties" (\vals -> runSqlPool (upsertGovFunctions vals) pool)
+  fetchAndStore_ "Transacties" (\vals -> runSqlPool (upsertTransactions vals) pool)
 
-  putStrLn "Collecting CBS expenditures..."
-  pageCount <- fetchExpenditures manager 5000 $ \odata -> do
-    runSqlPool (upsertExpenditures (odataValue odata)) pool
-    putStr "."
-  case pageCount of
-    Left err -> putStrLn $ "\nError fetching expenditures: " ++ err
-    Right () -> do
-      putStrLn "\nCBS collection complete."
-      now <- getCurrentTime
-      let timestamp = Text.pack $ formatTime defaultTimeLocale "%Y-%m-%dT%H:%M:%S" now
-      runSqlPool (setSyncMeta "cbs_last_sync" timestamp) pool
+  putStrLn $ "Collecting CBS expenditures (" ++ show (length periodKeys)
+           ++ " periods × " ++ show (length sectorKeys) ++ " sectors)..."
+
+  let totalSlices = length periodKeys * length sectorKeys
+  slicesDone <- newIORef (0 :: Int)
+  errorCount <- newIORef (0 :: Int)
+
+  forM_ periodKeys $ \periodKey ->
+    forM_ sectorKeys $ \sectorKey -> do
+      result <- fetchExpenditureSlice manager periodKey sectorKey
+      case result of
+        Left err -> do
+          modifyIORef' errorCount (+1)
+          putStrLn $ "  Error " ++ Text.unpack periodKey ++ "/" ++ Text.unpack sectorKey
+                   ++ ": " ++ err
+        Right rows -> do
+          runSqlPool (upsertExpenditures rows) pool
+          modifyIORef' slicesDone (+1)
+          done <- readIORef slicesDone
+          putStr $ "\r  " ++ show done ++ "/" ++ show totalSlices
+                 ++ " slices (" ++ show (length rows) ++ " rows last)"
+          hFlush stdout
+
+  errors <- readIORef errorCount
+  putStrLn $ "\nCBS collection complete. Errors: " ++ show errors
+  now <- getCurrentTime
+  let timestamp = Text.pack $ formatTime defaultTimeLocale "%Y-%m-%dT%H:%M:%S" now
+  runSqlPool (setSyncMeta "cbs_last_sync" timestamp) pool
   where
+    fetchAndStore :: String -> ([ODataValue] -> IO ()) -> IO [Text.Text]
     fetchAndStore dimension storeAction = do
+      result <- fetchDimension manager dimension
+      case result of
+        Left err -> do
+          putStrLn $ "Error fetching " ++ dimension ++ ": " ++ err
+          pure []
+        Right vals -> do
+          storeAction vals
+          putStrLn $ "  " ++ dimension ++ ": " ++ show (length vals) ++ " entries"
+          pure (map ovKey vals)
+
+    fetchAndStore_ :: String -> ([ODataValue] -> IO ()) -> IO ()
+    fetchAndStore_ dimension storeAction = do
       result <- fetchDimension manager dimension
       case result of
         Left err -> putStrLn $ "Error fetching " ++ dimension ++ ": " ++ err
         Right vals -> do
-          _ <- storeAction vals
+          storeAction vals
           putStrLn $ "  " ++ dimension ++ ": " ++ show (length vals) ++ " entries"
 
 -- | Collect Rijksfinancien budget tables for all years and phases.
