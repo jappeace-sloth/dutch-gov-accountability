@@ -19,8 +19,8 @@ tests = testGroup "Iv3 Client"
             , "  \"Categorie\": \"L3.8    \","
             , "  \"Gemeenten\": \"GM0363  \","
             , "  \"Verslagsoort\": \"2023X005\","
-            , "  \"EerstePublicatie_1\": 1234.0,"
-            , "  \"Bijgesteld_2\": 1250.5"
+            , "  \"k_1ePlaatsing_1\": 1234.0,"
+            , "  \"k_2ePlaatsing_2\": 1250.5"
             , "}"
             ]
       case eitherDecode json of
@@ -40,8 +40,8 @@ tests = testGroup "Iv3 Client"
             , "  \"Categorie\": \"L1.1\","
             , "  \"Gemeenten\": \"GM0599\","
             , "  \"Verslagsoort\": \"2022X003\","
-            , "  \"EerstePublicatie_1\": null,"
-            , "  \"Bijgesteld_2\": null"
+            , "  \"k_1ePlaatsing_1\": null,"
+            , "  \"k_2ePlaatsing_2\": null"
             , "}"
             ]
       case eitherDecode json of
