@@ -1,28 +1,74 @@
-cabal-version: 3.0
-name:          dutch-gov-accountability
-version:       0.1.0.0
-synopsis:      CBS + Rijksfinancien data scraper for Dutch government spending
-license:       MIT
-build-type:    Simple
+cabal-version:      3.0
 
-common warnings
-  ghc-options: -Wall -Werror -Wunused-packages -Wunused-imports
+name:           dutch-gov-accountability
+version:        1.0.0
+homepage:       https://github.com/jappeace/dutch-gov-accountability#readme
+bug-reports:    https://github.com/jappeace/dutch-gov-accountability/issues
+author:         Jappie Klooster
+maintainer:     hi@jappie.me
+copyright:      2025 Jappie Klooster
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+synopsis:       CBS + Rijksfinancien data scraper for Dutch government spending
 
-library
-  import:           warnings
-  exposed-modules:
-    DutchGov.CBS.Client
-    DutchGov.CBS.ODataResponse
-    DutchGov.CLI
-    DutchGov.Database
-    DutchGov.Rijksfinancien.BudgetTable
-    DutchGov.Rijksfinancien.Client
-    DutchGov.Schema
-    DutchGov.Scraper
+source-repository head
+  type: git
+  location: https://github.com/jappeace/dutch-gov-accountability
+
+common common-options
+  default-extensions:
+      EmptyCase
+      FlexibleContexts
+      FlexibleInstances
+      InstanceSigs
+      MultiParamTypeClasses
+      LambdaCase
+      MultiWayIf
+      NamedFieldPuns
+      TupleSections
+      DeriveFoldable
+      DeriveFunctor
+      DeriveGeneric
+      DeriveLift
+      DeriveTraversable
+      DerivingStrategies
+      GeneralizedNewtypeDeriving
+      StandaloneDeriving
+      OverloadedStrings
+      TypeApplications
+      NumericUnderscores
+      ImportQualifiedPost
+
+  ghc-options:
+    -O2 -Wall -Werror -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Widentities -Wredundant-constraints
+    -Wcpp-undef -fwarn-tabs -Wpartial-fields
+    -fdefer-diagnostics -Wunused-packages
+    -fenable-th-splice-warnings
+    -fno-omit-yields
+    -threaded -rtsopts "-with-rtsopts=-N -M7G -T -Iw10"
 
   build-depends:
-    , aeson
-    , base                  >=4.7 && <5
+      base >=4.9.1.0 && <4.22.0
+
+  default-language: Haskell2010
+
+library
+  import: common-options
+  exposed-modules:
+      DutchGov.CBS.Client
+      DutchGov.CBS.ODataResponse
+      DutchGov.CLI
+      DutchGov.Database
+      DutchGov.Rijksfinancien.BudgetTable
+      DutchGov.Rijksfinancien.Client
+      DutchGov.Schema
+      DutchGov.Scraper
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
     , http-client
     , http-client-tls
     , http-types
@@ -33,35 +79,29 @@ library
     , text
     , time
 
-  hs-source-dirs:   src
-  default-language: Haskell2010
-
-executable dutch-gov-accountability
-  import:           warnings
-  main-is:          Main.hs
+executable exe
+  import: common-options
+  main-is: Main.hs
+  hs-source-dirs:
+      app
   build-depends:
-    , base                      >=4.7 && <5
-    , dutch-gov-accountability
+      dutch-gov-accountability
     , persistent-sqlite
     , text
+  ghc-options: -Wno-unused-packages
 
-  hs-source-dirs:   app
-  default-language: Haskell2010
-
-test-suite dutch-gov-accountability-test
-  import:           warnings
-  type:             exitcode-stdio-1.0
-  main-is:          Test.hs
+test-suite unit
+  import: common-options
+  type: exitcode-stdio-1.0
+  main-is: Test.hs
+  ghc-options: -Wno-unused-packages
   other-modules:
-    DutchGov.CBS.ODataResponseTest
-    DutchGov.Rijksfinancien.BudgetTableTest
-
+      DutchGov.CBS.ODataResponseTest
+      DutchGov.Rijksfinancien.BudgetTableTest
+  hs-source-dirs:
+      test
   build-depends:
-    , aeson
-    , base                      >=4.7 && <5
+      aeson
     , dutch-gov-accountability
     , tasty
     , tasty-hunit
-
-  hs-source-dirs:   test
-  default-language: Haskell2010
