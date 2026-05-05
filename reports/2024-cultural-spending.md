@@ -56,12 +56,30 @@ EUR 5 billion is the highest on record.
 
 ## Municipal view (Iv3 jaarrekening 2024)
 
-Iv3 data covers all 342 Dutch municipalities. Culture-related task fields are:
+Iv3 data covers all 342 Dutch municipalities. Culture-related task fields
+(BBV taakvelden) are defined in the
+[Iv3-informatievoorschrift](https://findo.nl/content/53---Cultuurpresentatie,-cultuurproductie-en-cultuurparticipatie):
 
-- **5.3** Cultuurpresentatie, cultuurproductie en cultuurparticipatie
-- **5.4** Musea
-- **5.5** Cultureel erfgoed
-- **5.6** Media
+- **5.3 Cultuurpresentatie, cultuurproductie en cultuurparticipatie** —
+  performing arts venues (theatres, concert halls, dance), visual arts
+  (galleries, artist subsidies, art acquisitions including public art),
+  film/video, arts education (cultuureducatie), cultural events and
+  commemorations, umbrella organisations for artistic practice.
+  Excludes: museums (5.4), heritage (5.5), folk festivals (3.4).
+- **5.4 Musea** — acquiring, preserving, researching and presenting art and
+  culture. Includes museums, exhibitions, archaeology, local history studies,
+  and historical archives. Excludes: administrative archives (0.4), historic
+  buildings (5.5).
+- **5.5 Cultureel erfgoed** — conserving and making cultural heritage publicly
+  accessible. Covers historic buildings, protected cityscapes (beschermde
+  stads- en dorpsgezichten), monuments, and other historically valuable
+  objects. Includes subsidy, management, maintenance, supervision, and
+  enforcement.
+- **5.6 Media** — care for physical and electronic culture carriers. Includes
+  libraries (bibliotheken), art/video libraries, local press and local
+  broadcasting (lokale omroep), local information provision (including via
+  ICT), and umbrella organisations. Not exclusively libraries — also covers
+  local journalism and digital information carriers.
 
 Total municipal cultural spending (2024 annual accounts): **EUR 2,829 million**
 across all cost categories, of which EUR 2,475 million is expenditure (lasten).
@@ -79,8 +97,8 @@ million, so culture represents **0.8%** of all municipal spending.
 | 5.5 Cultureel erfgoed                            |   173  |
 
 More than half goes to the broad "cultuurpresentatie" category (theatres,
-concert halls, festivals, art production). Media (libraries, local broadcasting)
-is the second-largest.
+concert halls, festivals, visual arts, arts education). Media (libraries, local
+broadcasting, local press) is the second-largest.
 
 ### Top 20 municipalities (million EUR)
 
@@ -196,7 +214,7 @@ break down by task field:
 | 5.3 Cultuurpresentatie | 81.1 | 14.0 | Theatre/venue staff, festival coordinators, programming |
 | 5.4 Musea | 69.5 | 7.2 | Curators, guides, museum admin |
 | 5.5 Cultureel erfgoed | 43.3 | 3.0 | Monument inspectors, heritage officers, archaeologists |
-| 5.6 Media | 21.7 | 3.8 | Library staff (bibliotheken) |
+| 5.6 Media | 21.7 | 3.8 | Library staff, local broadcasting/press staff |
 
 ### The outsource model (Amsterdam, Rotterdam, Utrecht)
 
@@ -252,8 +270,8 @@ Maastricht's salary breakdown by task field:
 | 5.4 Musea | 0.9 | 0.1 | 0.2 | 0.7 | 1.9 |
 | 5.5 Cultureel erfgoed | 0.8 | — | — | 0.9 | 1.7 |
 
-Maastricht **runs its own library system** — the EUR 3.1M media salary means
-librarians are municipal employees, not staff of an outsourced stichting. It
+Maastricht **runs its own media services** — the EUR 3.1M media salary covers
+librarians and possibly local broadcasting staff as municipal employees. It
 also has significant in-house cultuurpresentatie staff (EUR 4.0M + EUR 1.2M
 temps) for municipally-run theatres/venues, alongside EUR 4.5M in subsidies to
 independent cultural organisations. This is the hybrid pattern: the municipality
