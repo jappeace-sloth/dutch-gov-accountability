@@ -10,7 +10,7 @@ copyright:      2025 Jappie Klooster
 license:        MIT
 license-file:   LICENSE
 build-type:     Simple
-synopsis:       CBS + Rijksfinancien public data collector for Dutch government spending
+synopsis:       CBS + Rijksfinancien + Iv3 public data collector for Dutch government spending
 
 source-repository head
   type: git
@@ -60,11 +60,25 @@ library
       DutchGov.CBS.Client
       DutchGov.CBS.ODataResponse
       DutchGov.CLI
+      DutchGov.Collector
       DutchGov.Database
+      DutchGov.Iv3.Client
+      DutchGov.Iv3.DatasetRegistry
       DutchGov.Rijksfinancien.BudgetTable
       DutchGov.Rijksfinancien.Client
       DutchGov.Schema
-      DutchGov.Collector
+      DutchGov.Schema.BudgetEntry
+      DutchGov.Schema.CbsTransaction
+      DutchGov.Schema.Expenditure
+      DutchGov.Schema.GovFunction
+      DutchGov.Schema.Iv3CostCategory
+      DutchGov.Schema.Iv3Municipality
+      DutchGov.Schema.Iv3MunicipalFinance
+      DutchGov.Schema.Iv3ReportType
+      DutchGov.Schema.Iv3TaskField
+      DutchGov.Schema.Period
+      DutchGov.Schema.Sector
+      DutchGov.Schema.SyncMeta
   hs-source-dirs:
       src
   build-depends:
@@ -99,11 +113,13 @@ test-suite unit
   other-modules:
       DutchGov.CBS.ODataResponseTest
       DutchGov.DatabaseTest
+      DutchGov.Iv3.ClientTest
       DutchGov.Rijksfinancien.BudgetTableTest
   hs-source-dirs:
       test
   build-depends:
       aeson
+    , bytestring
     , dutch-gov-accountability
     , monad-logger
     , persistent

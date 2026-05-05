@@ -15,11 +15,13 @@ main = do
   case cmd of
     Collect opts -> do
       withDatabase (collectDb opts) $ \pool ->
-        collectAll (collectSource opts) pool
+        collectAll (collectSource opts) (collectIv3Options opts) pool
     Status opts -> do
       withDatabase (statusDb opts) $ \pool -> do
         cbsTime <- runSqlPool (getSyncMeta "cbs_last_sync") pool
         rfjTime <- runSqlPool (getSyncMeta "rijksfinancien_last_sync") pool
+        iv3Time <- runSqlPool (getSyncMeta "iv3_last_sync") pool
         putStrLn "Database status:"
         putStrLn $ "  CBS last sync: " ++ maybe "never" Text.unpack cbsTime
         putStrLn $ "  Rijksfinancien last sync: " ++ maybe "never" Text.unpack rfjTime
+        putStrLn $ "  Iv3 last sync: " ++ maybe "never" Text.unpack iv3Time

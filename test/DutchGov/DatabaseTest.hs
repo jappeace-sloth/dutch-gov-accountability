@@ -10,6 +10,7 @@ import Test.Tasty.HUnit
 
 import DutchGov.CBS.Client (CbsExpenditure(..))
 import DutchGov.Database
+import DutchGov.Iv3.Client (Iv3FinanceRow(..))
 import DutchGov.Rijksfinancien.BudgetTable (BudgetRow(..))
 import DutchGov.Schema
 
@@ -146,4 +147,59 @@ tests = testGroup "Database raw SQL upserts"
       budgetEntryChapterName (entities !! 0) @?= Nothing
       budgetEntryVuo (entities !! 0) @?= "O"
       budgetEntryAmount (entities !! 0) @?= 500
+
+  , testCase "iv3 municipal finance insert and retrieve" $ withTestDb $ \pool -> do
+      let row = Iv3FinanceRow
+            { iv3TaskFieldKey = "TV5.4"
+            , iv3CostCategoryKey = "L3.8"
+            , iv3MunicipalityKey = "GM0363"
+            , iv3ReportTypeKey = "2023X005"
+            , iv3AmountFirst = Just 1234.0
+            , iv3AmountRevised = Just 1250.5
+            }
+      runSqlPool (upsertIv3MunicipalFinances 2023 [row]) pool
+      results <- runSqlPool (selectList [] []) pool
+      let entities = map entityVal results :: [Iv3MunicipalFinance]
+      length entities @?= 1
+      iv3MunicipalFinanceYear (entities !! 0) @?= 2023
+      iv3MunicipalFinanceTaskFieldKey (entities !! 0) @?= "TV5.4"
+      iv3MunicipalFinanceCostCategoryKey (entities !! 0) @?= "L3.8"
+      iv3MunicipalFinanceMunicipalityKey (entities !! 0) @?= "GM0363"
+      iv3MunicipalFinanceReportTypeKey (entities !! 0) @?= "2023X005"
+      iv3MunicipalFinanceAmountFirstPublication (entities !! 0) @?= Just 1234.0
+      iv3MunicipalFinanceAmountRevised (entities !! 0) @?= Just 1250.5
+
+  , testCase "iv3 municipal finance upsert replaces amounts" $ withTestDb $ \pool -> do
+      let row1 = Iv3FinanceRow
+            { iv3TaskFieldKey = "TV0.1"
+            , iv3CostCategoryKey = "L1.1"
+            , iv3MunicipalityKey = "GM0599"
+            , iv3ReportTypeKey = "2023X005"
+            , iv3AmountFirst = Just 100.0
+            , iv3AmountRevised = Just 110.0
+            }
+          row2 = row1 { iv3AmountFirst = Just 200.0, iv3AmountRevised = Just 220.0 }
+      runSqlPool (upsertIv3MunicipalFinances 2023 [row1]) pool
+      runSqlPool (upsertIv3MunicipalFinances 2023 [row2]) pool
+      results <- runSqlPool (selectList [] []) pool
+      let entities = map entityVal results :: [Iv3MunicipalFinance]
+      length entities @?= 1
+      iv3MunicipalFinanceAmountFirstPublication (entities !! 0) @?= Just 200.0
+      iv3MunicipalFinanceAmountRevised (entities !! 0) @?= Just 220.0
+
+  , testCase "iv3 municipal finance with null amounts" $ withTestDb $ \pool -> do
+      let row = Iv3FinanceRow
+            { iv3TaskFieldKey = "TV7.1"
+            , iv3CostCategoryKey = "L4.2"
+            , iv3MunicipalityKey = "GM0518"
+            , iv3ReportTypeKey = "2021X005"
+            , iv3AmountFirst = Nothing
+            , iv3AmountRevised = Nothing
+            }
+      runSqlPool (upsertIv3MunicipalFinances 2021 [row]) pool
+      results <- runSqlPool (selectList [] []) pool
+      let entities = map entityVal results :: [Iv3MunicipalFinance]
+      length entities @?= 1
+      iv3MunicipalFinanceAmountFirstPublication (entities !! 0) @?= Nothing
+      iv3MunicipalFinanceAmountRevised (entities !! 0) @?= Nothing
   ]
