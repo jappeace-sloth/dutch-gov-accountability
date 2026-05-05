@@ -1,11 +1,2 @@
-.stack-work/
-network-uri-lenses.cabal
-.ghc.environment*
-dist*
-.#*
+dist-newstyle/
 result
-TAGS
-
-*.hi
-*.o
-.envrc
