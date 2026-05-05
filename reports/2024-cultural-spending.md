@@ -36,6 +36,36 @@ Twee derde van de cultuuruitgaven komt van de lokale overheid.
 Lonen vormen 29% van het totaal — niet de meerderheid. De grootste post is
 intermediair verbruik (ingekochte goederen en diensten), met 35%.
 
+### Uitsplitsing kapitaaluitgaven (2023, totaal overheid, miljoenen EUR)
+
+De post "Overige kapitaaluitgaven" (EUR 700 mln) is een subtotaal dat als
+volgt uiteenvalt:
+
+| Component                                         | Bedrag |
+|----------------------------------------------------|-------:|
+| P51g Bruto investeringen vaste activa              |   651  |
+| D92 Investeringsbijdragen                          |    17  |
+| NP Saldo aan-/verkopen niet-geproduceerde activa   |     9  |
+| D99 Overige kapitaaloverdrachten                   |     2  |
+
+Het leeuwendeel (EUR 651 mln) betreft **bouw en renovatie van culturele
+gebouwen** — denk aan museumuitbreidingen, nieuwe theatergebouwen,
+bibliotheekverbouwingen en concertzaalrenovaties. Van het totaal komt
+EUR 487 mln (70%) van de lokale overheid, wat aansluit bij het feit dat
+gemeenten de voornaamste eigenaren zijn van culturele infrastructuur.
+
+| Jaar | Kapitaaluitgaven | Jaar | Kapitaaluitgaven |
+|------|-----------------:|------|-----------------:|
+| 2015 |              433 | 2020 |              708 |
+| 2016 |              530 | 2021 |              698 |
+| 2017 |              551 | 2022 |              847 |
+| 2018 |              703 | 2023 |              700 |
+| 2019 |              677 | 2024 |              763 |
+
+De kapitaaluitgaven zijn in een decennium bijna verdubbeld (van EUR 433 mln
+in 2015 naar EUR 763 mln in 2024), wat de golf van culturele bouwprojecten
+door heel Nederland weerspiegelt.
+
 ### Trend (1995–2024, totaal overheid, miljoenen EUR)
 
 | Jaar | Bedrag | Jaar | Bedrag | Jaar | Bedrag |
