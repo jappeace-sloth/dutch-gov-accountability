@@ -182,6 +182,108 @@ institutions. Strong museum spending (EUR 24M — highest ratio outside G4).
 services (EUR 9M) and salaries (EUR 6M) suggest more direct cultural
 operation. Unique EUR 2.5M in lease payments (pachten).
 
+## Who employs the cultural workers? Three municipal models
+
+The EUR 216M in municipal cultural salaries raises the question: what do these
+people actually do, and why do some cities spend so much on staff while others
+outsource everything?
+
+290 out of 342 municipalities have staff on their cultural payroll. The salaries
+break down by task field:
+
+| Task field | Salaries | Temp staff | Likely roles |
+|---|---:|---:|---|
+| 5.3 Cultuurpresentatie | 81.1 | 14.0 | Theatre/venue staff, festival coordinators, programming |
+| 5.4 Musea | 69.5 | 7.2 | Curators, guides, museum admin |
+| 5.5 Cultureel erfgoed | 43.3 | 3.0 | Monument inspectors, heritage officers, archaeologists |
+| 5.6 Media | 21.7 | 3.8 | Library staff (bibliotheken) |
+
+### The outsource model (Amsterdam, Rotterdam, Utrecht)
+
+These cities give money to independent foundations (stichtingen) and let them
+hire their own people. The municipality's role is writing subsidy policy and
+cheques.
+
+| City | Salaries | Subsidies + transfers | Salary % |
+|---|---:|---:|---:|
+| Amsterdam | 15.2 | 214.9 | 6% |
+| Rotterdam | 12.2 | 163.4 | 6% |
+| Utrecht | 5.3 | 71.3 | 6% |
+
+Amsterdam's EUR 5.6M of cultuurpresentatie salaries is essentially the policy
+department — the Concertgebouw, Stedelijk Museum, and theatres are independent
+foundations that receive subsidies. Rotterdam is even more extreme: EUR 101M
+flows to "overige instellingen" through a single transfer mechanism.
+
+### The direct-operation model (Maastricht, Leiden, Delft)
+
+These cities own and operate cultural venues with civil servants (ambtenaren)
+on the municipal payroll.
+
+| City | Salaries | Subsidies + transfers | Salary % |
+|---|---:|---:|---:|
+| Maastricht | 8.8 | 5.0 | 30% |
+| Leiden | 7.4 | 0.0 | 27% |
+| Delft | 5.9 | 0.0 | 25% |
+
+Municipalities with high salary ratios (>20%) tend to be historic cities that
+directly run their museums, libraries, or heritage programmes:
+
+| Municipality | Salaries | Total culture | Salary % |
+|---|---:|---:|---:|
+| Nieuwkoop | 1.6 | 2.5 | 64% |
+| Bloemendaal | 0.7 | 1.8 | 37% |
+| Maastricht | 8.8 | 28.9 | 30% |
+| Bergen op Zoom | 3.8 | 13.2 | 29% |
+| Leiden | 7.4 | 27.3 | 27% |
+| Tiel | 3.1 | 11.7 | 27% |
+| Hoorn | 3.5 | 14.0 | 25% |
+| Delft | 5.9 | 23.7 | 25% |
+| Dordrecht | 6.2 | 27.2 | 23% |
+
+### Case study: Maastricht (EUR 8.8M salaries)
+
+Maastricht's salary breakdown by task field:
+
+| Task field | Salaries | Temp staff | Subsidies | Goods/svc | Total |
+|---|---:|---:|---:|---:|---:|
+| 5.3 Cultuurpresentatie | 4.0 | 1.2 | 4.5 | 7.7 | 19.0 |
+| 5.6 Media (libraries) | 3.1 | 0.3 | 0.3 | 1.5 | 6.3 |
+| 5.4 Musea | 0.9 | 0.1 | 0.2 | 0.7 | 1.9 |
+| 5.5 Cultureel erfgoed | 0.8 | — | — | 0.9 | 1.7 |
+
+Maastricht **runs its own library system** — the EUR 3.1M media salary means
+librarians are municipal employees, not staff of an outsourced stichting. It
+also has significant in-house cultuurpresentatie staff (EUR 4.0M + EUR 1.2M
+temps) for municipally-run theatres/venues, alongside EUR 4.5M in subsidies to
+independent cultural organisations. This is the hybrid pattern: the municipality
+both operates venues directly and subsidises others.
+
+The EUR 0.8M on cultureel erfgoed is heritage officers and monument inspectors
+— roles that exist in most municipalities regardless of operating model, because
+monument protection is a statutory municipal duty under the Erfgoedwet.
+
+### What this means: ownership structure
+
+In the **direct model**, the government owns the building, employs the workers,
+and runs the programming. The theatre IS the gemeente. Staff are ambtenaren
+with civil-service employment terms.
+
+In the **outsource model**, the cultural institution is an independent stichting
+(foundation) with its own board, employment contracts, and artistic direction.
+The municipality provides a subsidy (often multi-year) and may own the building
+(explaining the EUR 185M in rental income nationally), but the institution
+manages itself.
+
+The dual pattern visible in many cities (salaries AND subsidies) reflects the
+reality that even direct-operation cities subsidise some independent cultural
+organisations, while even outsource-model cities retain a small policy staff
+for cultural strategy, subsidy assessment, and monument inspection.
+
+The Iv3 data does not include institution names. To identify which specific
+organisations receive subsidies, the municipal begrotingsstukken (budget
+documents) or subsidieregisters would be needed.
+
 ## Cross-referencing the two datasets
 
 CBS reports EUR 4,502M total government cultural spending (2023). Of this,
