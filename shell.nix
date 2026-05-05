@@ -1,29 +1,14 @@
-{ sources ? import ./npins
-, pkgs ? import sources.nixpkgs {}
+{
+  hpkgs ? import ./nix/hpkgs.nix {},
+  pkgs ? import ./nix/pkgs.nix {},
 }:
-let
-  hp = pkgs.haskellPackages;
-in
-pkgs.mkShell {
+hpkgs.shellFor {
+  packages = ps: [ ps."dutch-gov-accountability" ];
+  withHoogle = false;
+
   buildInputs = [
-    (hp.ghcWithPackages (ps: [
-      ps.persistent
-      ps.persistent-sqlite
-      ps.aeson
-      ps.http-client
-      ps.http-client-tls
-      ps.http-types
-      ps.optparse-applicative
-      ps.monad-logger
-      ps.resourcet
-      ps.text
-      ps.bytestring
-      ps.time
-      ps.tasty
-      ps.tasty-hunit
-      ps.unliftio
-      ps.conduit
-    ]))
+    hpkgs.haskell-language-server
+    pkgs.ghcid
     pkgs.cabal-install
   ];
 }
