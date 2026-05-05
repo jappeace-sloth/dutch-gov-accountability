@@ -34,7 +34,7 @@ tests = testGroup "CBS ODataResponse"
           odataValue odata @?= []
 
   , testCase "parses expenditure row with amount" $ do
-      let json = "{\"value\": [{\"Transacties\": \"T001\", \"Overheidsfuncties\": \"F001\", \"Sectoren\": \"S001\", \"Perioden\": \"2023JJ00\", \"Uitgaven_1\": 42.5}]}"
+      let json = "{\"value\": [{\"Transacties\": \"T001\", \"Overheidsfuncties\": \"F001\", \"Sectoren\": \"S001\", \"Perioden\": \"2023JJ00\", \"OverheidsuitgavenEnBestedingen_1\": 42.5}]}"
       case eitherDecode json :: Either String (ODataResponse CbsExpenditure) of
         Left err -> assertFailure $ "Parse failed: " ++ err
         Right odata -> case odataValue odata of
@@ -47,7 +47,7 @@ tests = testGroup "CBS ODataResponse"
           other -> assertFailure $ "Expected 1 row, got " ++ show (length other)
 
   , testCase "parses expenditure row with null amount" $ do
-      let json = "{\"value\": [{\"Transacties\": \"T001\", \"Overheidsfuncties\": \"F001\", \"Sectoren\": \"S001\", \"Perioden\": \"2023JJ00\", \"Uitgaven_1\": null}]}"
+      let json = "{\"value\": [{\"Transacties\": \"T001\", \"Overheidsfuncties\": \"F001\", \"Sectoren\": \"S001\", \"Perioden\": \"2023JJ00\", \"OverheidsuitgavenEnBestedingen_1\": null}]}"
       case eitherDecode json :: Either String (ODataResponse CbsExpenditure) of
         Left err -> assertFailure $ "Parse failed: " ++ err
         Right odata -> case odataValue odata of
