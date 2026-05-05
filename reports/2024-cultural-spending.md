@@ -206,6 +206,58 @@ cultuuruitgaven wordt voor 68% gedreven door gemeenten, niet door het Rijk.
 Gemeenten *kiezen* ervoor om meer van hun vrij besteedbare budget aan cultuur
 te besteden — het is geen top-down beleid vanuit Den Haag.
 
+### Waarom gemeenten en niet een ministerie van Cultuur?
+
+Nederland heeft wel degelijk een cultuurministerie — het **Ministerie van
+Onderwijs, Cultuur en Wetenschap** (OCW) — maar het Nederlandse systeem werkt
+fundamenteel anders dan bijvoorbeeld het Franse gecentraliseerde cultuurbeleid.
+
+De oorsprong ligt in **Thorbeckes grondwetsherziening van 1848** en de
+Gemeentewet van 1851, die de *gedecentraliseerde eenheidsstaat* vestigden. Het
+uitgangspunt: bestuur vindt plaats op het laagst mogelijke niveau. Cultuurbeleid
+werd expliciet gezien als een **lokale aangelegenheid** — welk theater er komt,
+welke festivals subsidie krijgen, welke bibliotheek openblijft, dat zijn
+beslissingen die het best genomen worden door mensen die er wonen.
+
+Het systeem werkt in drie lagen:
+
+| Niveau | Rol | Budget (2024) |
+|--------|-----|---------------|
+| **OCW (Rijk)** | ~84 nationale instellingen (Rijksmuseum, Concertgebouw, Nationale Opera) + 6 cultuurfondsen (podiumkunsten, film, beeldende kunst, letteren, creatieve industrie, cultuurparticipatie). Stelt landelijk beleid vast. | ~EUR 1,8 mld |
+| **Provincies** | Beperkte coördinerende rol, enkele regionale musea, provinciaal erfgoed. Friesland heeft bijzondere taken rond de Friese taal. | marginaal |
+| **Gemeenten** | Alles overige: lokale musea, theaters, bibliotheken, festivals, kunsteducatie, monumentenzorg, lokale omroep. | ~EUR 3,0 mld |
+
+De sleutel tot het systeem is dat het **gemeentefonds bewust ongeoormerkt** is.
+Den Haag geeft gemeenten EUR 44 miljard en zegt: "bepaal zelf je prioriteiten."
+Dit was een bewuste ontwerpkeuze — als je cultuurbudget oormerkt, krijg je
+one-size-fits-all beleid vanuit Den Haag. In het huidige systeem kan Amsterdam
+EUR 306 miljoen aan cultuur besteden omdat het een wereldstad wil zijn, terwijl
+een plattelandsgemeente bijna niets hoeft uit te geven.
+
+De CBS-data bevestigen dat deze structuur al dertig jaar stabiel is:
+
+| Jaar | Lokale overheid | Rijksoverheid | % lokaal |
+|------|----------------:|--------------:|---------:|
+| 1995 | 3.445 | 3.048 | 69% |
+| 2000 | 5.228 | 1.942 | 68% |
+| 2005 | 6.703 | 2.184 | 72% |
+| 2010 | 8.254 | 2.941 | 73% |
+| 2015 | 7.120 | 2.229 | 72% |
+| 2020 | 8.379 | 5.094 | 65% |
+| 2024 | 11.708 | 5.617 | 69% |
+
+*(Bedragen in miljoenen euro's, CBS 84122NED bruto-uitgaven COFOG 8.2)*
+
+De lokale overheid is consistent verantwoordelijk voor **65-74%** van alle
+cultuuruitgaven. De "onverzadigbare honger" naar cultuur is in werkelijkheid het
+resultaat van 342 afzonderlijke gemeenteraden die jaar na jaar, onafhankelijk van
+elkaar, kiezen voor meer cultuur. Het is geen enkele beslissing — het zijn
+honderden lokale politieke keuzes.
+
+Een verklaring: cultuur is een **concurrentievoordeel** voor het aantrekken van
+bewoners en bedrijven. Een gemeente die bezuinigt op haar schouwburg verliest
+inwoners aan de buurgemeente die dat niet deed.
+
 ### Per cultuursubcategorie (landelijk totaal, miljoenen EUR)
 
 | Taakveld                                         | Bedrag |
