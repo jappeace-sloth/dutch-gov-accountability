@@ -8,6 +8,11 @@ module DutchGov.Database
   , upsertPeriods
   , upsertExpenditures
   , upsertBudgetEntries
+  , upsertIv3TaskFields
+  , upsertIv3CostCategories
+  , upsertIv3Municipalities
+  , upsertIv3ReportTypes
+  , upsertIv3MunicipalFinances
   , setSyncMeta
   , getSyncMeta
   ) where
@@ -21,6 +26,7 @@ import Database.Persist.Sqlite
 import DutchGov.Schema
 import DutchGov.CBS.ODataResponse
 import DutchGov.CBS.Client (CbsExpenditure(..))
+import DutchGov.Iv3.Client (Iv3FinanceRow(..))
 import DutchGov.Rijksfinancien.BudgetTable (BudgetRow(..))
 
 -- | Run a database action with connection pool and auto-migration.
@@ -135,3 +141,77 @@ getSyncMeta :: MonadIO m => Text -> SqlPersistT m (Maybe Text)
 getSyncMeta metaKey = do
   result <- getBy (UniqueMetaKey metaKey)
   pure $ fmap (syncMetaValue . entityVal) result
+
+-- | Upsert Iv3 task field dimension values.
+upsertIv3TaskFields :: MonadIO m => [ODataValue] -> SqlPersistT m ()
+upsertIv3TaskFields values = forM_ values $ \val ->
+  void $ upsertBy (UniqueIv3TaskFieldKey (ovKey val))
+    Iv3TaskField
+      { iv3TaskFieldCbsKey = ovKey val
+      , iv3TaskFieldTitle = ovTitle val
+      , iv3TaskFieldDescription = ovDescription val
+      , iv3TaskFieldCategoryGroupId = ovCategoryGroupId val
+      }
+    [ Iv3TaskFieldTitle =. ovTitle val
+    , Iv3TaskFieldDescription =. ovDescription val
+    , Iv3TaskFieldCategoryGroupId =. ovCategoryGroupId val
+    ]
+
+-- | Upsert Iv3 cost category dimension values.
+upsertIv3CostCategories :: MonadIO m => [ODataValue] -> SqlPersistT m ()
+upsertIv3CostCategories values = forM_ values $ \val ->
+  void $ upsertBy (UniqueIv3CostCategoryKey (ovKey val))
+    Iv3CostCategory
+      { iv3CostCategoryCbsKey = ovKey val
+      , iv3CostCategoryTitle = ovTitle val
+      , iv3CostCategoryDescription = ovDescription val
+      , iv3CostCategoryCategoryGroupId = ovCategoryGroupId val
+      }
+    [ Iv3CostCategoryTitle =. ovTitle val
+    , Iv3CostCategoryDescription =. ovDescription val
+    , Iv3CostCategoryCategoryGroupId =. ovCategoryGroupId val
+    ]
+
+-- | Upsert Iv3 municipality dimension values.
+upsertIv3Municipalities :: MonadIO m => [ODataValue] -> SqlPersistT m ()
+upsertIv3Municipalities values = forM_ values $ \val ->
+  void $ upsertBy (UniqueIv3MunicipalityKey (ovKey val))
+    Iv3Municipality
+      { iv3MunicipalityCbsKey = ovKey val
+      , iv3MunicipalityTitle = ovTitle val
+      , iv3MunicipalityDescription = ovDescription val
+      , iv3MunicipalityCategoryGroupId = ovCategoryGroupId val
+      }
+    [ Iv3MunicipalityTitle =. ovTitle val
+    , Iv3MunicipalityDescription =. ovDescription val
+    , Iv3MunicipalityCategoryGroupId =. ovCategoryGroupId val
+    ]
+
+-- | Upsert Iv3 report type dimension values.
+upsertIv3ReportTypes :: MonadIO m => [ODataValue] -> SqlPersistT m ()
+upsertIv3ReportTypes values = forM_ values $ \val ->
+  void $ upsertBy (UniqueIv3ReportTypeKey (ovKey val))
+    Iv3ReportType
+      { iv3ReportTypeCbsKey = ovKey val
+      , iv3ReportTypeTitle = ovTitle val
+      , iv3ReportTypeDescription = ovDescription val
+      , iv3ReportTypeCategoryGroupId = ovCategoryGroupId val
+      }
+    [ Iv3ReportTypeTitle =. ovTitle val
+    , Iv3ReportTypeDescription =. ovDescription val
+    , Iv3ReportTypeCategoryGroupId =. ovCategoryGroupId val
+    ]
+
+-- | Upsert Iv3 municipal finance rows using raw INSERT OR REPLACE for speed.
+upsertIv3MunicipalFinances :: MonadIO m => Int -> [Iv3FinanceRow] -> SqlPersistT m ()
+upsertIv3MunicipalFinances year rows = forM_ rows $ \row ->
+  rawExecute
+    "INSERT OR REPLACE INTO iv3_municipal_finance (year, task_field_key, cost_category_key, municipality_key, report_type_key, amount_first_publication, amount_revised) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    [ PersistInt64 (fromIntegral year)
+    , PersistText (iv3TaskFieldKey row)
+    , PersistText (iv3CostCategoryKey row)
+    , PersistText (iv3MunicipalityKey row)
+    , PersistText (iv3ReportTypeKey row)
+    , maybe PersistNull PersistDouble (iv3AmountFirst row)
+    , maybe PersistNull PersistDouble (iv3AmountRevised row)
+    ]
