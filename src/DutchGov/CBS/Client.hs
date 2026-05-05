@@ -34,7 +34,7 @@ instance FromJSON CbsExpenditure where
     funcKey <- obj .: "Overheidsfuncties"
     secKey <- obj .: "Sectoren"
     perKey <- obj .: "Perioden"
-    amount <- obj .:? "Uitgaven_1"
+    amount <- obj .:? "OverheidsuitgavenEnBestedingen_1"
     pure CbsExpenditure
       { ceTransactionKey = transKey
       , ceFunctionKey = funcKey
@@ -47,7 +47,7 @@ instance FromJSON CbsExpenditure where
 -- Returns all values (these tables are small, no pagination needed).
 fetchDimension :: MonadIO m => Manager -> String -> m (Either String [ODataValue])
 fetchDimension manager dimension = liftIO $ do
-  let url = cbsBaseUrl ++ dimension
+  let url = cbsBaseUrl ++ dimension ++ "?$format=json"
   request <- parseRequest url
   response <- httpLbs request manager
   case statusCode (responseStatus response) of
@@ -66,7 +66,7 @@ fetchExpenditureSlice :: MonadIO m
                       -> Text -- ^ Sector key (e.g. "A044938")
                       -> m (Either String [CbsExpenditure])
 fetchExpenditureSlice manager periodKey sectorKey = liftIO $ do
-  let url = cbsBaseUrl ++ "TypedDataSet?$filter=Perioden eq '"
+  let url = cbsBaseUrl ++ "TypedDataSet?$format=json&$filter=Perioden eq '"
               ++ Text.unpack periodKey ++ "' and Sectoren eq '"
               ++ Text.unpack sectorKey ++ "'"
   request <- parseRequest url
